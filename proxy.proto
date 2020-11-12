@@ -4,7 +4,6 @@ package proxypb;
 option go_package = "proxypb/proxypb";
 option java_package = "xln.common.proto.proxypb";
 
-import "google/protobuf/timestamp.proto";
 
 message Proxy {
     string name = 1;
