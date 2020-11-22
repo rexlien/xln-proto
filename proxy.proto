@@ -11,7 +11,18 @@ message Proxy {
 
 }
 
-message Config {
+message ProxyMatchResponse {
     repeated Proxy proxies = 1;
 
+}
+
+message ProxyMatchRequest {
+    string cluster = 1;
+    repeated Proxy proxies = 2;
+}
+
+service ProxyService {
+
+    //match proxy get requested upstreams, assign local streams and returns local matched proxies host/port
+    rpc MatchProxy (ProxyMatchRequest) returns (ProxyMatchResponse) {}
 }
