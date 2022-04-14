@@ -1,0 +1,32 @@
+//protocol used for deploying parameterized kustomization template to k8s management tool like spinnaker
+
+syntax = "proto3";
+package proxypb;
+
+option go_package = "deploypb/deploypb";
+option java_package = "xln.common.proto.deploypb";
+
+
+enum TemplateType {
+  BASE = 0;
+  DERIVED = 1;
+}
+
+
+message DeployTemplate {
+
+  //xln-deploy-template:owner:repo:manifestPath
+  TemplateType type = 1;
+  string phase = 3;
+  string manifestPath = 4;
+
+}
+
+message Deploy {
+
+  //xln-deploy:templateKey:version
+  string templateKey = 1;
+  string pipelineId = 3;
+  map<string, string> parameters = 2;
+
+}
